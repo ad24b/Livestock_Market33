@@ -1,0 +1,27 @@
+{% extends 'livestock/base.html' %}
+
+{% block title %}Livestock List{% endblock %}
+
+{% block content %}
+<h2 class="text-center my-4">Livestock List</h2>
+<div class="container">
+    <div class="row">
+        {% for item in livestock %}
+        <div class="col-md-3 col-sm-6 mb-4">
+            <!-- اجعل البطاقة بأكملها رابطًا -->
+            <a href="{% url 'livestock_detail' item.id %}" style="text-decoration: none; color: inherit;">
+                <div class="card" style="width: 18rem;">
+                    <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.name }}</h5>
+                        <p class="card-text"><strong>Category:</strong> {{ item.category }}</p>
+                        <p class="card-text"><strong>Price:</strong> ${{ item.price }}</p>
+                        <p class="card-text"><strong>Seller:</strong> {{ item.seller.username }}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

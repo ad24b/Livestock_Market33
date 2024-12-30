@@ -1,0 +1,13 @@
+
+{% extends 'livestock/base.html' %}
+
+{% block title %}Add Livestock{% endblock %}
+
+{% block content %}
+    <h2>Add Livestock</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Livestock</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,22 @@
+
+/*هذا لتحكم في خلفية الشريط الجانبي  */
+.nav {
+    background-color: #000000; /* اللون الخلفي الفاتح */
+    height: 100vh; /* لجعل الشريط يغطي الشاشة بالكامل */
+    width: 500px; /* عرض الشريط */
+    position: fixed; /* لجعل الشريط ثابتاً */
+    right: 0; /* لوضع الشريط على الجهة اليمنى */
+}
+
+
+
+.custom-nav-link {
+    color: #fff6f6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    
+}
+
+.custom-nav-link:hover {
+    background-color: #5a0202;
+    color: rgb(255, 252, 252);
+}

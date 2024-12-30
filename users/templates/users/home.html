@@ -1,0 +1,10 @@
+
+{% extends 'livestock/base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <h1>Welcome to the Home Page!</h1>
+    <p>Hello, {{ request.user.username }}!</p>
+    <a href="{% url 'logout' %}" class="btn btn-danger mt-3">Logout</a>
+{% endblock %}
