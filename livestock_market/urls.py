@@ -23,10 +23,16 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/', include('users.urls')),
-    path('livestock/', include('livestock.urls')), 
+    path('livestock/', include('livestock.urls')),
+    path('store/', include('store.urls')), 
     path('', home_view, name='home'),
 ]
 
 # ربط مسار ملفات الوسائط
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+# python3 manage.py makemigrations
+# python3 manage.py migrate
+# python3 manage.py runserver

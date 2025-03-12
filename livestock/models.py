@@ -25,6 +25,6 @@ class Livestock(models.Model):
         return self.name
     
 
-#python manage.py makemigrations
-#python manage.py migrate
-    
+# python3 manage.py makemigrations
+# python3 manage.py migrate
+# python3 manage.py runserver

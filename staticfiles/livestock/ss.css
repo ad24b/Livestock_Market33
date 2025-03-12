@@ -1,0 +1,55 @@
+/* ======= تنسيق الشريط الجانبي ======= */
+.nav {
+    background-color: #000000; /* اللون الخلفي الفاتح */
+    height: 100vh; /* لجعل الشريط يغطي الشاشة بالكامل */
+    width: 500px; /* عرض الشريط */
+    position: fixed; /* لجعل الشريط ثابتاً */
+    right: 0; /* لوضع الشريط على الجهة اليمنى */
+}
+
+.custom-nav-link {
+    color: #fff6f6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.custom-nav-link:hover {
+    background-color: #5a0202;
+    color: rgb(255, 252, 252);
+}
+
+/* ======= تنسيق أيقونة عربة التسوق ======= */
+.cart-icon {
+    position: fixed;
+    top: 90px;
+    left: 90px;
+    background-color: white;
+    border-radius: 90%;
+    width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.cart-icon i {
+    font-size: 60px;
+    color: #333;
+}
+
+.cart-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

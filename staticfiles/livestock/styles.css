@@ -1,0 +1,67 @@
+ /* تنسيق شريط التنقل */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+nav {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem 0;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+nav ul li {
+    margin: 0 1rem;
+}
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+nav ul li a:hover {
+    color: #ffdd57;
+}
+
+/* تنسيق المحتوى */
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* تنسيق الأزرار */
+button, .btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+button:hover, .btn:hover {
+    background-color: #0056b3;
+}
+
+/* تحسين الخطوط والتباعد */
+h1, h2, h3 {
+    color: #333;
+}
+p {
+    line-height: 1.6;
+    color: #000000;
+} 
+/*هذا لتحكم في خلفية الشريط الجانبي  */

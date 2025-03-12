@@ -1,5 +1,4 @@
-
-/*هذا لتحكم في خلفية الشريط الجانبي  */
+/* ======= تنسيق الشريط الجانبي ======= */
 .nav {
     background-color: #000000; /* اللون الخلفي الفاتح */
     height: 100vh; /* لجعل الشريط يغطي الشاشة بالكامل */
@@ -8,15 +7,49 @@
     right: 0; /* لوضع الشريط على الجهة اليمنى */
 }
 
-
-
 .custom-nav-link {
     color: #fff6f6;
     transition: background-color 0.3s ease, color 0.3s ease;
-    
 }
 
 .custom-nav-link:hover {
     background-color: #5a0202;
     color: rgb(255, 252, 252);
+}
+
+/* ======= تنسيق أيقونة عربة التسوق ======= */
+.cart-icon {
+    position: fixed;
+    top: 50px; /*تحديد موقع الايقونه فوق تحت كل ماقللت يطلع فوق*/
+    left: 50px; /* تحديد موقع الأيقونة كل ماقللت يروح يسار */
+    background-color: rgb(245, 243, 243);
+    border-radius: 90%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.cart-icon i {
+    font-size: 60px;
+    color: #080707;
+}
+
+.cart-count {
+    position: absolute;
+    top: -٥px;
+    right: -5px;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

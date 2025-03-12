@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
      'users',
      'livestock',
+     'store',
 ]
 
 # تخصيص نموذج المستخدم الافتراضي
@@ -127,9 +128,13 @@ STATIC_URL = '/static/'
 
 # إذا كنت تستخدم staticfiles خارج المجلد الافتراضي
 STATICFILES_DIRS = [
-    BASE_DIR / 'livestock/static',# تحديث المسار حسب موقع ملفاتك
-      BASE_DIR / 'users/static',  
+    BASE_DIR / 'livestock/static',  # تحديث المسار حسب موقع ملفاتك
+    BASE_DIR / 'users/static',  
 ]
+
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+
 
 # Media files (User-uploaded content)
 MEDIA_URL = '/media/'
