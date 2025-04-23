@@ -1,0 +1,17 @@
+{% extends "livestock/base.html" %}
+
+{% block title %}تأكيد الشراء{% endblock %}
+
+{% block content %}
+<div class="confirmation-box">
+    <h2>تأكيد شراء {{ livestock.name }}</h2>
+    <p>السعر: ${{ livestock.price }}</p>
+    <p>هل أنت متأكد أنك تريد شراء هذا المنتج؟</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-success">تأكيد الشراء</button>
+        <a href="{% url 'list_livestock' %}" class="btn btn-danger">إلغاء</a>
+    </form>
+</div>
+{% endblock %}

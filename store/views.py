@@ -1,27 +1,14 @@
-from django.shortcuts import redirect, get_object_or_404, render
-from .models import Product
-from .cart import Cart
+from django.shortcuts import render, redirect, get_object_or_404
+from livestock.models import Livestock
+from django.contrib.auth.decorators import login_required
 
-# عرض قائمة المنتجات وإضافة منتج للعربة
-def product_list(request):
-    products = Product.objects.all()
-    return render(request, 'store/cart_view.html', {'products': products})
 
-# عرض محتويات العربة
-def cart_detail(request):
-    cart = Cart(request)
-    return render(request, 'store/cart_detail.html', {'cart': cart})
 
-# إضافة منتج إلى العربة
-def cart_add(request, product_id):
-    cart = Cart(request)
-    product = get_object_or_404(Product, id=product_id)
-    cart.add(product)
-    return redirect('cart_detail')
 
-# إزالة منتج من العربة
-def cart_remove(request, product_id):
-    cart = Cart(request)
-    product = get_object_or_404(Product, id=product_id)
-    cart.remove(product)
-    return redirect('cart_detail')
+@login_required
+def livestock_buy_now(request, pk):
+    livestock = get_object_or_404(Livestock, pk=pk)
+    
+    # هنا ممكن تضع أي عملية شراء فعلية، أو إعادة توجيه إلى صفحة تأكيد الشراء
+    return render(request, 'store/buy_now_confirmation.html', {'livestock': livestock})
+

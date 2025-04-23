@@ -1,21 +1,39 @@
 {% extends "livestock/base.html" %}
 
-{% block title %}Livestock Details{% endblock %}
+{% block title %}{{ livestock.name }} Details{% endblock %}
 
 {% block content %}
-<div class="container mt-5">
-    <div class="card">
-        <img src="{{ livestock.image.url }}" class="card-img-top" alt="{{ livestock.name }}" style="max-height: 300px; object-fit: cover;">
-        <div class="card-body">
-            <h3 class="card-title">{{ livestock.name }}</h3>
-            <p class="card-text"><strong>Category:</strong> {{ livestock.category }}</p>
-            <p class="card-text"><strong>Weight:</strong> {{ livestock.weight }} kg</p>
-            <p class="card-text"><strong>Age:</strong> {{ livestock.age }} years</p>
-            <p class="card-text"><strong>Price:</strong> ${{ livestock.price }}</p>
-            <p class="card-text"><strong>Description:</strong> {{ livestock.description }}</p>
-            <p class="card-text"><strong>Owner:</strong> {{ livestock.owner.username }}</p>
+<div class="details-container">
+    <div class="details-card">
+        <img src="{{ livestock.image.url }}" class="details-img" alt="{{ livestock.name }}">
+        <div class="details-body">
+            <h2 class="details-title">{{ livestock.name }}</h2>
+            <hr class="details-divider">
+
+            <div class="details-info-row">
+                <div><strong>Category:</strong> {{ livestock.category }}</div>
+                <div><strong>Weight:</strong> {{ livestock.weight }} kg</div>
+            </div>
+
+            <div class="details-info-row">
+                <div><strong>Age:</strong> {{ livestock.age }} years</div>
+                <div class="details-price"><strong>Price:</strong> ${{ livestock.price }}</div>
+            </div>
+
+            <hr class="details-divider">
+
+            <p class="details-description"><strong>Description:</strong><br>{{ livestock.description }}</p>
+            <p class="details-owner"><strong>Owner:</strong> {{ livestock.owner.username }}</p>
+
+            <div class="details-actions">
+                <a href="{% url 'list_livestock' %}" class="btn-back">
+                    <i class="fa-solid fa-arrow-left"></i> Back to List
+                </a>
+                <a href="{% url 'livestock_buy_now' livestock.id %}" class="btn-add-cart">
+                    <i class="fa-solid fa-bolt"></i> اشتر الآن
+                </a>                
+            </div>
         </div>
     </div>
 </div>
-<a href="{% url 'list_livestock' %}" class="btn btn-primary mt-3">Back to List</a>
 {% endblock %}

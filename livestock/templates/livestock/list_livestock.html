@@ -4,24 +4,31 @@
 
 {% block content %}
 <h2 class="text-center my-4">Livestock List</h2>
-<div class="container">
-    <div class="row">
-        {% for item in livestock %}
-        <div class="col-md-3 col-sm-6 mb-4">
-            <!-- اجعل البطاقة بأكملها رابطًا -->
-            <a href="{% url 'livestock_detail' item.id %}" style="text-decoration: none; color: inherit;">
-                <div class="card" style="width: 18rem;">
-                    <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ item.name }}</h5>
-                        <p class="card-text"><strong>Category:</strong> {{ item.category }}</p>
-                        <p class="card-text"><strong>Price:</strong> ${{ item.price }}</p>
-                        <p class="card-text"><strong>Seller:</strong> {{ item.seller.username }}</p>
-                    </div>
-                </div>
+
+<div class="product-grid">
+    {% for item in livestock %}
+    <div class="product-card">
+        <a href="{% url 'livestock_detail' item.id %}" style="text-decoration: none; color: inherit;">
+            <img src="{{ item.image.url }}" class="product-img" alt="{{ item.name }}">
+            <div class="card-body">
+                <h5 class="product-title">{{ item.name }}</h5>
+                <p class="product-category"><strong>Category:</strong> {{ item.category }}</p>
+                <p class="product-price"><strong>Price:</strong> ${{ item.price }}</p>
+                <p class="product-seller">
+                    <strong>Seller:</strong>
+                    <a href="{% url 'profile' %}?user={{ item.seller.username }}" style="color: #007bff; text-decoration: underline;">
+                        {{ item.seller.username }}
+                    </a>
+                </p>
+            </div>
+        </a>
+        <div class="details-actions" style="justify-content: center;">
+            <a href="{% url 'livestock_detail' item.id %}" class="btn btn-primary">
+                <i class="fa-solid fa-bolt"></i> اطلب الآن
             </a>
+            <a href="{% url 'livestock_buy_now' item.id %}" class="btn btn-success">💰 اشتر الآن</a>
         </div>
-        {% endfor %}
     </div>
+    {% endfor %}
 </div>
 {% endblock %}

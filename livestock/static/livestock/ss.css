@@ -1,21 +1,219 @@
 /* ======= تنسيق الشريط الجانبي ======= */
 .nav {
-    background-color: #000000; /* اللون الخلفي الفاتح */
-    height: 100vh; /* لجعل الشريط يغطي الشاشة بالكامل */
-    width: 500px; /* عرض الشريط */
-    position: fixed; /* لجعل الشريط ثابتاً */
-    right: 0; /* لوضع الشريط على الجهة اليمنى */
+    background-color: #ffffff; /* الخلفية البيضاء */
+    height: 100vh; /* جعل الشريط يغطي الشاشة بالكامل */
+    width: 280px; /* تعديل العرض ليطابق التصميم */
+    position: fixed; /* جعله ثابتًا أثناء التمرير */
+    right: 0; /* تثبيته على الجهة اليمنى */
+    padding: 20px; /* إضافة تباعد داخلي */
+    border-left: 1px solid #ddd; /* إضافة حد فاتح للفصل بينه وبين المحتوى */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
+/* ======= تنسيق عنوان الشريط الجانبي ======= */
+.brand-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #0056b3; /* لون أزرق متناسق مع التصميم */
+    margin-bottom: 20px;
+}
+
+/* ======= تنسيق الروابط داخل الشريط الجانبي ======= */
 .custom-nav-link {
-    color: #fff6f6;
+    color: #222; /* لون النص */
+    font-size: 18px; /* حجم الخط */
+    display: block;
+    padding: 12px 20px; /* تعديل التباعد الداخلي */
+    text-decoration: none;
+    border-radius: 8px;
+    width: 100%; /* جعل الأزرار تمتد لكامل العرض */
+    text-align: left;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .custom-nav-link:hover {
-    background-color: #5a0202;
-    color: rgb(255, 252, 252);
+    background-color: #e3e6ea; /* لون أزرق فاتح عند التمرير */
+    color: #0056b3;
 }
+
+/* ======= تمييز الرابط النشط ======= */
+.active-nav-link {
+    background-color: #0056b3; /* خلفية زرقاء */
+    color: white;
+    font-weight: bold;
+}
+
+/* ======= ضبط الهوامش ======= */
+.nav-link:not(:last-child) {
+    margin-bottom: 10px; /* مسافة بين كل عنصر */
+}
+
+
+
+/* ======= تنسيق محتوى الصفحة بالكامل ======= */
+.main-content {
+    margin-right: 280px; /* إزاحة المحتوى ليبدأ بعد الشريط الجانبي */
+    padding: 20px;
+}
+
+/* ======= تنسيق شبكة المنتجات ======= */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* تقسيم إلى 4 أعمدة */
+    gap: 10px; /* مسافة بين العناصر */
+    padding: 65px; /* تباعد داخلي  تصغير وتكبير حجم المنتجات معى بعض*/
+}
+
+/* ======= تنسيق بطاقة المنتج ======= */
+.product-card {
+    background: rgb(244, 242, 242);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    padding: 15px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px; /* ضبط ارتفاع الصورة */
+    object-fit: cover; /* ضمان تناسق الصور */
+    border-bottom: 1px solid #ddd;
+}
+
+/* ======= ضبط النصوص داخل بطاقة المنتج ======= */
+.product-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.product-category {
+    font-size: 14px;
+    color: gray;
+}
+
+.product-price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #0056b3;
+    margin-top: 5px;
+}
+
+
+
+
+
+/* ====== Product Details Page Styles ====== */
+
+.details-container {
+    margin-right: 280px; /* تجنب التداخل مع الشريط الجانبي */
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.details-card {
+    width: 100%;
+    max-width: 800px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.details-img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+}
+
+.details-body {
+    padding: 25px;
+}
+
+.details-title {
+    color: #0056b3;
+    margin-bottom: 15px;
+    font-size: 28px;
+}
+
+.details-divider {
+    border: none;
+    height: 1px;
+    background-color: #e0e0e0;
+    margin: 15px 0;
+}
+
+.details-info-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.details-price {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.details-description {
+    margin-top: 15px;
+    line-height: 1.6;
+}
+
+.details-owner {
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.details-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.btn-back, .btn-add-cart {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-back {
+    background-color: #fff;
+    color: #0056b3;
+    border: 2px solid #0056b3;
+}
+
+.btn-back:hover {
+    background-color: #0056b3;
+    color: #fff;
+}
+
+.btn-add-cart {
+    background-color: #0056b3;
+    color: #fff;
+    border: 2px solid #0056b3;
+}
+
+.btn-add-cart:hover {
+    background-color: #004095;
+    border-color: #004095;
+}
+
+
+
+
 
 /* ======= تنسيق أيقونة عربة التسوق ======= */
 .cart-icon {
@@ -40,7 +238,7 @@
 
 .cart-count {
     position: absolute;
-    top: -٥px;
+    top: -5px;
     right: -5px;
     background-color: red;
     color: white;

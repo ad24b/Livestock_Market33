@@ -18,6 +18,14 @@ class Livestock(models.Model):
     description = models.TextField()
     image = models.ImageField(upload_to='livestock_images/')
     seller = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='sold_livestock')
+
+     # أضف هذا الحقل الجديد
+    in_cart = models.BooleanField(default=False)
+
+     # حقول الحجز الجديدة
+    reserved = models.BooleanField(default=False)
+    reserved_until = models.DateTimeField(null=True, blank=True)
+    reserved_by = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='reservations', null=True, blank=True, on_delete=models.SET_NULL)
     
 
 

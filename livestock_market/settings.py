@@ -40,6 +40,7 @@ INSTALLED_APPS = [
      'users',
      'livestock',
      'store',
+     'profiles',
 ]
 
 # تخصيص نموذج المستخدم الافتراضي
