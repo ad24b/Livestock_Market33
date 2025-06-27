@@ -116,3 +116,7 @@ def become_seller_request_view(request):
         form = SellerRequestForm()
 
     return render(request, 'users/become_seller_request.html', {'form': form})
+
+# python3 manage.py makemigrations
+# python3 manage.py migrate
+# python3 manage.py runservergit init 

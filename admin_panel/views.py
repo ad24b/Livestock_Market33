@@ -145,3 +145,8 @@ def approve_seller_request(request, request_id):
 
     messages.success(request, f'تمت الموافقة على طلب البائع {user.username} بنجاح.')
     return redirect('admin_seller_requests')
+
+
+# python3 manage.py makemigrations
+# python3 manage.py migrate
+# python3 manage.py runserver
