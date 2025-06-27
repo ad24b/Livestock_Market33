@@ -26,6 +26,8 @@ urlpatterns = [
     path('livestock/', include('livestock.urls')),
     path('store/', include('store.urls')), 
     path('', home_view, name='home'),
+    path('admin-panel/', include('admin_panel.urls')),
+
 ]
 
 # ربط مسار ملفات الوسائط

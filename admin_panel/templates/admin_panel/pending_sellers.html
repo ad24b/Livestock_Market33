@@ -1,0 +1,33 @@
+{% extends 'admin_panel/base_admin.html' %}
+{% block title %}طلبات القبول للبائعين{% endblock %}
+
+{% block content %}
+<h3 class="mb-4">طلبات القبول للبائعين</h3>
+
+<table class="table table-bordered table-striped text-center">
+    <thead class="table-dark">
+        <tr>
+            <th>اسم المستخدم</th>
+            <th>البريد الإلكتروني</th>
+            <th>الحالة</th>
+            <th>قبول</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for seller in pending_sellers %}
+        <tr>
+            <td>{{ seller.username }}</td>
+            <td>{{ seller.email }}</td>
+            <td><span class="badge bg-warning text-dark">غير مفعل</span></td>
+            <td>
+                <a href="{% url 'toggle_seller_status' seller.id %}" class="btn btn-success btn-sm">قبول</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4" class="text-muted">لا توجد طلبات قيد الانتظار.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

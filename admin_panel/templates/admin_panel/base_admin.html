@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>{% block title %}لوحة التحكم{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container-fluid">
+    <div class="row min-vh-100">
+        <!-- الشريط الجانبي -->
+        <nav class="col-md-3 col-lg-2 d-md-block bg-dark text-white sidebar py-4">
+            <div class="text-center mb-4">
+                <h4>لوحة التحكم</h4>
+            </div>
+            <ul class="nav flex-column px-3">
+                <li class="nav-item mb-2">
+                    <a class="nav-link text-white bg-primary rounded py-2" href="{% url 'admin_dashboard' %}">
+                        📦 عدد المنتجات 
+                        <span class="badge bg-light text-dark float-end">{{ total_products }}</span>
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a class="nav-link text-white bg-success rounded py-2" href="{% url 'admin_sellers' %}">
+                        🧑‍💼 عدد البائعين 
+                        <span class="badge bg-light text-dark float-end">{{ total_sellers }}</span>
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a class="nav-link text-white bg-secondary rounded py-2" href="#">
+                        👤 عدد الزبائن 
+                        <span class="badge bg-light text-dark float-end">{{ total_buyers }}</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- محتوى الصفحة -->
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
+            
+            <!-- ✅ الشريط العلوي -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom px-4 mb-4">
+                <div class="container-fluid">
+                    <span class="navbar-brand fw-bold">إدارة البائعين</span>
+                    <div class="collapse navbar-collapse">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a class="nav-link {% if request.path == '/admin-panel/sellers/' %}active fw-bold text-primary{% endif %}" href="{% url 'admin_sellers' %}">
+                                    📋 قائمة البائعين
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {% if request.path == '/admin-panel/sellers/pending/' %}active fw-bold text-primary{% endif %}" href="{% url 'admin_pending_sellers' %}">
+                                    ⏳ طلبات القبول
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {% if request.path == '/admin-panel/seller-requests/' %}active fw-bold text-primary{% endif %}" href="{% url 'admin_seller_requests' %}">
+                                    📥 طلبات البائعين
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    ⚙️ إعدادات البائعين
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            {% block content %}
+            {% endblock %}
+        </main>
+    </div>
+</div>
+
+</body>
+</html>

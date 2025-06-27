@@ -1,0 +1,39 @@
+{% extends 'admin_panel/base_admin.html' %}
+{% block title %}طلبات البائعين{% endblock %}
+
+{% block content %}
+<h3 class="mb-4">طلبات التحول إلى بائع</h3>
+
+<table class="table table-bordered text-center">
+    <thead class="table-dark">
+        <tr>
+            <th>اسم المستخدم</th>
+            <th>البريد الإلكتروني</th>
+            <th>الرسالة</th>
+            <th>تاريخ الطلب</th>
+            <th>الإجراء</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for req in requests %}
+        <tr>
+            <td>{{ req.user.username }}</td>
+            <td>{{ req.user.email }}</td>
+            <td>{{ req.message|default:"—" }}</td>
+            <td>{{ req.created_at|date:"Y-m-d H:i" }}</td>
+            <td>
+                <!-- ✅ إصلاح الرابط بإضافة معرف الطلب -->
+                <form method="post" action="{% url 'approve_seller_request' req.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-success btn-sm">✅ قبول</button>
+                </form>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5" class="text-muted">لا توجد طلبات حالياً.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

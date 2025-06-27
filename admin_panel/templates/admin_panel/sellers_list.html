@@ -1,0 +1,43 @@
+{% extends 'admin_panel/base_admin.html' %}
+{% block title %}قائمة البائعين{% endblock %}
+
+{% block content %}
+<h3 class="mb-4">قائمة البائعين</h3>
+
+<div class="d-flex mb-3">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link {% if active_tab == 'active' %}active{% endif %}" href="{% url 'admin_sellers' %}?tab=active">البائعين النشطين</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {% if active_tab == 'suspended' %}active{% endif %}" href="{% url 'admin_suspended_sellers' %}?tab=suspended">البائعين المقيدين</a>
+        </li>
+    </ul>
+</div>
+
+<table class="table table-bordered text-center">
+    <thead class="table-dark">
+        <tr>
+            <th>اسم المستخدم</th>
+            <th>البريد الإلكتروني</th>
+            <th>تحكم</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for seller in sellers %}
+        <tr>
+            <td>{{ seller.username }}</td>
+            <td>{{ seller.email }}</td>
+            <td>
+                <a href="{% url 'toggle_seller_status' seller.id %}" class="btn btn-danger btn-sm">تعليق الحساب</a>
+                <a href="{% url 'remove_seller_status' seller.id %}" class="btn btn-warning btn-sm">إزالة العضوية</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3" class="text-muted">لا توجد سجلات حالياً.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

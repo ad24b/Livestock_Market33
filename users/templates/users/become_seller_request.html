@@ -1,0 +1,13 @@
+{% extends 'livestock/base.html' %}
+{% block title %}طلب أن أصبح بائعًا{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h3 class="mb-3">طلب أن تصبح بائعًا</h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">إرسال الطلب</button>
+    </form>
+</div>
+{% endblock %}

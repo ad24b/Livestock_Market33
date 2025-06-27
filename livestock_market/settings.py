@@ -37,10 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-     'users',
-     'livestock',
-     'store',
-     'profiles',
+    'users',
+    'livestock',
+    'store',
+    'profiles',
+    'admin_panel',
 ]
 
 # تخصيص نموذج المستخدم الافتراضي
@@ -136,12 +137,25 @@ STATICFILES_DIRS = [
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 
-
 # Media files (User-uploaded content)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# ✅ إعدادات الجلسات (Sessions) المحسّنة
+SESSION_ENGINE = "django.contrib.sessions.backends.cached_db"
+SESSION_COOKIE_AGE = 60 * 60 * 24  # الجلسة تستمر لمدة 24 ساعة
+SESSION_SAVE_EVERY_REQUEST = True
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+CSRF_USE_SESSIONS = True  # تخزين CSRF في الجلسة لمنع التضارب
+CSRF_COOKIE_SECURE = False  # في التطوير فقط (يجب أن يكون True في الإنتاج)
+SESSION_COOKIE_SECURE = False  # في التطوير فقط (يجب أن يكون True في الإنتاج)
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SAMESITE = 'Lax'
+

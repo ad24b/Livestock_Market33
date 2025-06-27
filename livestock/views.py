@@ -1,13 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.utils import timezone
-from datetime import timedelta
+from django.contrib import messages
+from django.http import HttpResponseForbidden
 from .forms import LivestockForm
 from .models import Livestock
 
 # وظيفة إضافية لتحرير الحجوزات المنتهية
 def release_expired_reservations():
-    expired_items = Livestock.objects.filter(reserved=True, reserved_until__lt=timezone.now())
+    expired_items = Livestock.objects.filter(reserved=True )
     for item in expired_items:
         item.reserved = False
         item.reserved_until = None
@@ -16,6 +16,10 @@ def release_expired_reservations():
 
 @login_required
 def add_livestock_view(request):
+    if request.user.role != 'seller':
+        messages.warning(request, "هذه الميزة متاحة للبائعين فقط. يمكنك تقديم طلب لتصبح بائعًا.")
+        return redirect('profile')
+
     if request.method == 'POST':
         form = LivestockForm(request.POST, request.FILES)
         if form.is_valid():
@@ -25,6 +29,7 @@ def add_livestock_view(request):
             return redirect('list_livestock')  # الانتقال إلى قائمة المواشي بعد الإضافة
     else:
         form = LivestockForm()
+        
     return render(request, 'livestock/add_livestock.html', {'form': form})
 
 def list_livestock_view(request):
