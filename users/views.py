@@ -120,3 +120,6 @@ def become_seller_request_view(request):
 # python3 manage.py makemigrations
 # python3 manage.py migrate
 # python3 manage.py runservergit init 
+# python3 manage.py makemigrations
+# python3 manage.py migrate
+# python3 manage.py runservergit init git checkout -b
